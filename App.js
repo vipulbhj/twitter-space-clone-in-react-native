@@ -8,10 +8,12 @@ import { HMSProvider } from './components/HMSContext';
 
 import HomeScreen, { HomeHeader } from './screens/HomeScreen';
 import SpaceScreen from './screens/SpaceScreen';
+import TestScreen from './screens/TestScreen';
+import TestTwoScreen from './screens/TestScreen2';
 
 const theme = extendTheme({
   config: {
-    initialColorMode: 'dark',
+    initialColorMode: 'light',
   },
 });
 
@@ -32,22 +34,28 @@ export default function App() {
   }, []);
 
   if (!hmsInstanceLoaded) {
-    return <Text>Loading...</Text>;
+    return null;
   }
 
   return (
     <HMSProvider value={hmsInstance.current}>
       <NativeBaseProvider theme={theme}>
-        <NavigationContainer>
-          <Stack.Navigator>
-            <Stack.Screen
-              name="Home"
-              component={HomeScreen}
-              options={{ headerTitle: (props) => <HomeHeader {...props} /> }}
-            />
-            <Stack.Screen name="Space" component={SpaceScreen} />
-          </Stack.Navigator>
-        </NavigationContainer>
+        {hmsInstanceLoaded ? (
+          <NavigationContainer>
+            <Stack.Navigator initialRouteName="Test">
+              <Stack.Screen
+                name="Home"
+                component={HomeScreen}
+                options={{ headerTitle: (props) => <HomeHeader {...props} /> }}
+              />
+              <Stack.Screen name="Space" component={SpaceScreen} />
+              <Stack.Screen name="Test" component={TestScreen} />
+              <Stack.Screen name="Test2" component={TestTwoScreen} />
+            </Stack.Navigator>
+          </NavigationContainer>
+        ) : (
+          <Text>Loading ...</Text>
+        )}
       </NativeBaseProvider>
     </HMSProvider>
   );
