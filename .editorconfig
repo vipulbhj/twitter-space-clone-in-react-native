@@ -1,0 +1,7 @@
+# Windows files
+[*.bat]
+end_of_line = crlf
+
+[*]
+indent_size = 2
+indent_style = space

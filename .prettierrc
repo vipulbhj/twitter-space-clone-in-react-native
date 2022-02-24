@@ -1,0 +1,11 @@
+{
+  "singleQuote": true,
+  "jsxBracketSameLine": false,
+  "useTabs": false,
+  "prettier.tabWidth": 2,
+  "eslintIntegration": false,
+  "tslintIntegration": true,
+  "parser": "typescript",
+  "requireConfig": false,
+  "stylelintIntegration": false
+}
